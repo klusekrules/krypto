@@ -1,0 +1,23 @@
+version: 0.5.{build}
+environment:
+    PYTHON: "C:\\Python27"
+    PYTHON_VERSION: "2.7.8"
+    PYTHON_ARCH: "32"
+
+    matrix:
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CONAN_VISUAL_VERSIONS: 14
+          CONAN_BUILD_TYPES: Release
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+          CONAN_BUILD_TYPES: Release
+
+install:
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - cmd: pip.exe install conan
+  - cmd: conan user # Create the conan data directory
+  - cmd: conan --version
+
+build_script:
+  - cmd: conan create . klusek_rules/stable
+ 

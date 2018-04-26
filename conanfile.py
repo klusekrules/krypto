@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
 
 class KryptoConan(ConanFile):
     name = "Krypto"
-    version = "0.5"
+    version = os.getenv("APPVEYOR_BUILD_VERSION", "0.5.0")
     license = "MIT"
     url = "https://github.com/klusekrules/krypto"
     description = "Krypto contains few cryptographic algorithms."
