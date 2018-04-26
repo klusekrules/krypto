@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake
-
+import os
 
 class KryptoConan(ConanFile):
     name = "Krypto"
